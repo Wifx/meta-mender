@@ -8,5 +8,4 @@ MENDER_FEATURES_ENABLE_append = " \
     mender-systemd \
     mender-ubi \
     mender-uboot \
-    mender-uboot-ubi-env \
 "

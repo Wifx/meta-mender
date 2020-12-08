@@ -64,7 +64,7 @@ vol_name=rootfsa
 
 [rootfsB]
 mode=ubi
-image=${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.ubifs
+image=${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.ubivoidimg
 vol_id=1
 vol_size=${MENDER_CALC_ROOTFS_SIZE}KiB
 vol_type=dynamic
@@ -80,7 +80,8 @@ vol_name=data
 
 EOF
 
-    if ${@bb.utils.contains("DISTRO_FEATURES", "mender-uboot", "true", "false", d)}; then
+    if [ ${@bb.utils.contains("DISTRO_FEATURES", "mender-uboot", "true", "false", d)} && \
+         ${@bb.utils.contains("DISTRO_FEATURES", "mender-uboot-ubi-env", "true", "false", d)} ]; then
         cat >> ${WORKDIR}/ubimg-${IMAGE_NAME}.cfg <<EOF
 [u-boot-env-1]
 mode=ubi
@@ -110,7 +111,7 @@ EOF
 
 }
 
-IMAGE_TYPEDEP_ubimg_append = " ubifs dataimg"
+IMAGE_TYPEDEP_ubimg_append = " ubifs ubivoidimg dataimg"
 
 # So that we can use the files from excluded paths in the full images.
 do_image_ubimg[respect_exclude_path] = "0"

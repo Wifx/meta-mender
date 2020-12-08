@@ -1,6 +1,6 @@
 IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', 'mender-image', ' mender mender.bmap', '', d)}"
 IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', 'mender-image-sd', ' sdimg sdimg.bmap', '', d)}"
-IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', 'mender-image-ubi', ' ubimg mtdimg ubimg.bmap', '', d)}"
+IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', 'mender-image-ubi', ' ubimg ubimg.bmap', '', d)}"
 IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', 'mender-image-uefi', ' uefiimg uefiimg.bmap', '', d)}"
 IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', 'mender-image-bios', ' biosimg biosimg.bmap', '', d)}"
 IMAGE_FSTYPES += "${@bb.utils.contains('DISTRO_FEATURES', 'mender-image-gpt', ' gptimg gptimg.bmap', '', d)}"

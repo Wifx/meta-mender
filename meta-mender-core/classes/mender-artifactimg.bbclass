@@ -113,6 +113,9 @@ IMAGE_CMD_mender () {
         $image_flag ${IMGDEPLOYDIR}/${ARTIFACTIMG_NAME}.${ARTIFACTIMG_FSTYPE} \
         ${MENDER_ARTIFACT_EXTRA_ARGS} \
         -o ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.mender
+
+    rm -rf ${IMGDEPLOYDIR}/release/*.mender
+    ln -sr ${IMGDEPLOYDIR}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.mender ${IMGDEPLOYDIR}/release/${MENDER_ARTIFACT_NAME}_${MACHINE}.mender
 }
 
 IMAGE_CMD_mender[vardepsexclude] += "IMAGE_ID"
